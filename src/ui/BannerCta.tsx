@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import Btn from "./Btn";
+import Btn from "../components/Btn";
 
 function BannerCta() {
   return (

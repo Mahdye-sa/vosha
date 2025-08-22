@@ -29,7 +29,7 @@ function WhyUs() {
   return (
     <Box
       sx={{
-        py: { md: 5, xs: 2 },
+        py: { md: 5, xs: 1 },
         width: "100%",
         display: "flex",
         flexDirection: { xs: "column-reverse", md: "row" },
@@ -65,7 +65,6 @@ function WhyUs() {
             gridTemplateColumns: {
               xs: "repeat(2, 1fr)",
               sm: "repeat(4, 1fr)",
-              md: "repeat(4, 1fr)",
             },
 
             gap: 2,

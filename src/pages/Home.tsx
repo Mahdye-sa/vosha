@@ -1,16 +1,14 @@
-import BannerCta from "../components/BannerCta";
-import BlogCards from "../components/BlogCards";
-import ProductSlide from "../components/ProductSlide";
-import WhyUs from "../components/WhyUs";
-import AboutUs from "../components/AboutUs";
-import ContactUs from "../components/ContactUs";
-import FAQAccordion from "../components/FAQAccordion";
-import Header from "../components/Header";
+import BannerCta from "../ui/BannerCta";
+import BlogCards from "../ui/BlogCards";
+import ProductSlide from "../ui/ProductSlide";
+import WhyUs from "../ui/WhyUs";
+import AboutUs from "../ui/AboutUs";
+import ContactUs from "../ui/ContactUs";
+import FAQAccordion from "../ui/FAQAccordion";
 
 function Home() {
   return (
     <>
-      <Header />
       <BannerCta />
       <WhyUs />
       <ProductSlide />

@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useProducts } from "../contexts/ProductsContext";
-import ProducItem from "./ProducItem";
+import ProducItem from "../components/ProducItem";
 import { Link } from "react-router-dom";
 
 function ProductSlide() {
