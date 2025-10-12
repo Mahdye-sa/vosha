@@ -1,9 +1,18 @@
 import { Box } from "@mui/material";
-import { useProducts } from "../contexts/ProductsContext";
-import ProducItem from "../components/ProducItem";
+import { useLoaderData } from "react-router-dom";
+import ProducItem from "../features/product/ProducItem";
+
+interface productProps {
+  id: number;
+  title: string;
+  description: string;
+  img: string;
+  price: number;
+}
 
 function Products() {
-  const { products } = useProducts();
+  const products = useLoaderData<productProps[]>();
+
   return (
     <Box
       sx={{
@@ -21,8 +30,8 @@ function Products() {
         gap: 2,
       }}
     >
-      {products.map((product) => (
-        <ProducItem productItem={product} key={product.id} />
+      {products.map((product: productProps) => (
+        <ProducItem key={product.id} productItem={product} />
       ))}
     </Box>
   );

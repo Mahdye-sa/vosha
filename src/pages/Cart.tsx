@@ -8,25 +8,10 @@ import {
   CardContent,
   CardMedia,
 } from "@mui/material";
-import { useCart } from "../contexts/CartContext";
+
 import DeleteIcon from "@mui/icons-material/Delete";
 
 function Cart() {
-  const { cartItems, increaseQuantity, decreaseQuantity, removeFromCart } =
-    useCart();
-
-  const totalPrice = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
-
-  if (cartItems.length === 0)
-    return (
-      <Box sx={{ p: 5, textAlign: "center" }}>
-        <Typography variant="h6">سبد خرید شما خالی است</Typography>
-      </Box>
-    );
-
   return (
     <Box
       sx={{ p: 2, width: "90%", mx: "auto", mb: 10, textAlign: "center" }}
@@ -43,9 +28,8 @@ function Cart() {
         سبد خرید
       </Typography>
 
-      {cartItems.map((item) => (
+      {[].map(() => (
         <Card
-          key={item.id}
           sx={{
             display: "flex",
             flexDirection: { xs: "column", sm: "row", md: "row" },
@@ -58,8 +42,6 @@ function Cart() {
         >
           <CardMedia
             component="img"
-            image={item.img}
-            alt={item.title}
             sx={{
               width: { xs: "100%", sm: "30%", md: "20%" },
               height: { xs: "100%", sm: "100%" },
@@ -70,14 +52,12 @@ function Cart() {
           />
 
           <CardContent sx={{ flex: 1, textAlign: "right", width: "100%" }}>
-            <Typography variant="subtitle1" fontWeight="bold">
-              {item.title}
-            </Typography>
+            <Typography variant="subtitle1" fontWeight="bold"></Typography>
             <Typography variant="body2" color="text.secondary" mt={1}>
-              قیمت: {item.price.toLocaleString()} تومان
+              قیمت: تومان
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              جمع: {(item.price * item.quantity).toLocaleString()} تومان
+              جمع: تومان
             </Typography>
 
             <Box
@@ -89,27 +69,15 @@ function Cart() {
                 flexWrap: "wrap",
               }}
             >
-              <Button
-                variant="outlined"
-                size="small"
-                onClick={() => increaseQuantity(item.id)}
-              >
+              <Button variant="outlined" size="small">
                 +
               </Button>
-              <Typography>{item.quantity}</Typography>
-              <Button
-                variant="outlined"
-                size="small"
-                onClick={() => decreaseQuantity(item.id)}
-              >
+              <Typography></Typography>
+              <Button variant="outlined" size="small">
                 -
               </Button>
 
-              <IconButton
-                onClick={() => removeFromCart(item.id)}
-                color="error"
-                sx={{ mr: "auto" }}
-              >
+              <IconButton color="error" sx={{ mr: "auto" }}>
                 <DeleteIcon />
               </IconButton>
             </Box>
@@ -128,7 +96,7 @@ function Cart() {
         }}
       >
         <Typography variant="h6" fontWeight="bold">
-          جمع کل: {totalPrice.toLocaleString()} تومان
+          جمع کل: تومان
         </Typography>
         <Button
           variant="contained"

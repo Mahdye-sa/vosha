@@ -2,45 +2,48 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import Product from "./pages/Products";
 import Login from "./pages/Login";
+import Cart from "./pages/Cart";
 import NotFound from "./ui/NotFound";
-import { ProductsProvider } from "./contexts/ProductsContext";
+
 import MeaningsBlog from "./ui/MeaningsBlog";
 import CareBlog from "./ui/CareBlog";
 import OccasionsBlog from "./ui/OccasionsBlog";
-import Cart from "./pages/Cart";
-import { CartProvider } from "./contexts/CartContext";
-import AppLayout from "./AppLayout";
+
+import AppLayout from "./ui/AppLayout";
+import getProducts from "./services/apiProduct";
 
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
     errorElement: <NotFound />,
     children: [
-      { path: "/", element: <Home /> },
-      { path: "/login", element: <Login /> },
-      { path: "/cart", element: <Cart /> },
-      { path: "/products", element: <Product /> },
+      { path: "/", errorElement: <NotFound />, element: <Home /> },
+
+      { path: "/cart", errorElement: <NotFound />, element: <Cart /> },
+      {
+        path: "/products",
+        errorElement: <NotFound />,
+        element: <Product />,
+        loader: getProducts,
+      },
       {
         path: "/blog/meanings",
+        errorElement: <NotFound />,
         element: <MeaningsBlog />,
       },
-      { path: "/blog/care", element: <CareBlog /> },
+      { path: "/blog/care", errorElement: <NotFound />, element: <CareBlog /> },
       {
         path: "/blog/occasions",
+        errorElement: <NotFound />,
         element: <OccasionsBlog />,
       },
     ],
   },
+  { path: "/login", element: <Login />, errorElement: <NotFound /> },
 ]);
 
 function App() {
-  return (
-    <CartProvider>
-      <ProductsProvider>
-        <RouterProvider router={router} />
-      </ProductsProvider>
-    </CartProvider>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

@@ -51,8 +51,7 @@ function ContactUs() {
 
       <Box
         sx={{
-          backgroundImage:
-            "url('/vecteezy_a-pink-piece-of-pink-crumpled-paper-with-white-tape_65884076.png')",
+          backgroundImage: "url('/bg-contact.png')",
           backgroundSize: "100%",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

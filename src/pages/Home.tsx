@@ -1,6 +1,6 @@
 import BannerCta from "../ui/BannerCta";
 import BlogCards from "../ui/BlogCards";
-import ProductSlide from "../ui/ProductSlide";
+import ProductSlide from "../features/product/ProductSlide";
 import WhyUs from "../ui/WhyUs";
 import AboutUs from "../ui/AboutUs";
 import ContactUs from "../ui/ContactUs";
