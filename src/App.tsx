@@ -10,7 +10,7 @@ import CareBlog from "./ui/CareBlog";
 import OccasionsBlog from "./ui/OccasionsBlog";
 
 import AppLayout from "./ui/AppLayout";
-import getProducts from "./services/apiProduct";
+import getProducts from "./features/product/apiProduct";
 
 const router = createBrowserRouter([
   {

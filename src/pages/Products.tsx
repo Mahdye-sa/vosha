@@ -19,7 +19,7 @@ function Products() {
         my: 5,
 
         mx: "auto",
-        width: { md: "70%", sm: "80%", xs: "90%" },
+        width: "90%",
         display: "grid",
         gridTemplateColumns: {
           xs: "repeat(1, 1fr)",

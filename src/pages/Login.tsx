@@ -1,4 +1,4 @@
-import AuthForm from "../features/auth/AuthForm";
+import AuthForm from "../features/authentication/AuthForm";
 
 function Login() {
   return <AuthForm />;

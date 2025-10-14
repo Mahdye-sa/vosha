@@ -1,11 +1,6 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-} from "@mui/material";
+import { Card, CardContent, CardMedia, Typography } from "@mui/material";
+import { formatPrice } from "../../utils/helper";
+import UpdataQuantity from "../cart/UpdataQuantity";
 
 interface ProductProps {
   id: number;
@@ -20,43 +15,35 @@ interface ProductItemProps {
 }
 
 function ProducItem({ productItem }: ProductItemProps) {
-  console.log(productItem.img);
   return (
     <Card
       sx={{
-        mx: "auto",
         maxWidth: "100%",
         flexShrink: 0,
         textAlign: "center",
         borderRadius: 4,
+        pb: "2rem",
       }}
     >
       <CardMedia
         component="img"
-        height="200"
+        height="320"
         image={productItem.img}
         alt={productItem.title}
       />
       <CardContent>
-        <Typography variant="h6" mb={1}>
+        <Typography variant="h5" mb={2} fontWeight="bold">
           {productItem.title}
         </Typography>
-        <Typography variant="body2">{productItem.description}</Typography>
-        <Typography variant="subtitle1" fontWeight="bold" mt={1}>
-          {productItem.price.toLocaleString()} تومان
+
+        <Typography variant="body1">{productItem.description}</Typography>
+
+        <Typography variant="h6" fontWeight="bold" mt={2}>
+          {formatPrice(productItem.price)}
         </Typography>
       </CardContent>
-      <Box sx={{ display: "flex", flexDirection: "row" }}>
-        <Button variant="outlined" size="small" sx={{ fontSize: 20 }}>
-          +
-        </Button>
-        <Typography variant="h6" px={1}>
-          5
-        </Typography>
-        <Button variant="outlined" size="small" sx={{ fontSize: 20 }}>
-          -
-        </Button>
-      </Box>
+
+      <UpdataQuantity id={productItem.id} />
     </Card>
   );
 }
