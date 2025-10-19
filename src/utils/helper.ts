@@ -1,5 +1,5 @@
 function formatPrice(price: number): string {
-  return price.toLocaleString() + "000" + " تومان";
+  return price.toLocaleString() + " , 000" + " تومان ";
 }
 
 export { formatPrice };

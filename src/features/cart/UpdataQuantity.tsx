@@ -1,11 +1,17 @@
 import { Box, Button, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { useDispatch } from "react-redux";
-import { decreaseItemQuantity, increaseItemQuantity } from "./cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  decreaseItemQuantity,
+  getCurrentQuantityById,
+  increaseItemQuantity,
+} from "./cartSlice";
+import type { UpdateQuantityProps } from "../../interfaces/product";
 
-function UpdataQuantity({ id }: { id: number }) {
+function UpdataQuantity({ productId }: UpdateQuantityProps) {
   const dispatch = useDispatch();
+  const currentQuantity = useSelector(getCurrentQuantityById(productId));
 
   return (
     <Box
@@ -18,16 +24,16 @@ function UpdataQuantity({ id }: { id: number }) {
     >
       <Button
         variant="contained"
-        sx={{ mx: "1rem" }}
-        onClick={() => dispatch(increaseItemQuantity(id))}
+        sx={{ mx: "1rem", borderRadius: 3 }}
+        onClick={() => dispatch(increaseItemQuantity(productId))}
       >
         <AddIcon fontSize="small" />
       </Button>
-      <Typography fontSize="1.7rem">1</Typography>
+      <Typography fontSize="1.7rem">{currentQuantity}</Typography>
       <Button
         variant="contained"
-        sx={{ mx: "1rem" }}
-        onClick={() => dispatch(decreaseItemQuantity(id))}
+        sx={{ mx: "1rem", borderRadius: 3 }}
+        onClick={() => dispatch(decreaseItemQuantity(productId))}
       >
         <RemoveIcon fontSize="small" />
       </Button>

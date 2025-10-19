@@ -1,23 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
+import type { RootState } from "../../store";
+import type { Product } from "../../interfaces/product";
 
-interface product {
-  id: number;
-  title: string;
-  price: number;
-  quantity: number;
-  totalPrice: number;
+// const fakeProduct: Product = {
+//   id: 5,
+//   img: "sjhxsuhx",
+//   title: "flower",
+//   price: 250,
+//   quantity: 5,
+//   totalPrice: 1,
+// };
+
+interface CartState {
+  cart: Product[];
 }
 
-const fakeProduct: product = {
-  id: 120,
-  title: "flower",
-  price: 250,
-  quantity: 1,
-  totalPrice: 1,
-};
-
-const initialState = {
-  cart: [fakeProduct],
+const initialState: CartState = {
+  cart: [],
 };
 
 const cartSlice = createSlice({
@@ -42,9 +41,14 @@ const cartSlice = createSlice({
 
     decreaseItemQuantity(state, action) {
       const item = state.cart.find((item) => item.id === action.payload);
-      if (item) {
-        item.quantity--;
-        item.totalPrice = item.price * item.quantity;
+
+      if (!item) return;
+
+      item.quantity--;
+      item.totalPrice = item.price * item.quantity;
+
+      if (item.quantity <= 0) {
+        state.cart = state.cart.filter((i) => i.id !== action.payload);
       }
     },
 
@@ -53,6 +57,19 @@ const cartSlice = createSlice({
     },
   },
 });
+
+export const getCurrentQuantityById =
+  (ProductId: number) => (state: RootState) =>
+    state.cart.cart.find((item: Product) => item.id === ProductId)?.quantity ??
+    0;
+
+export const getCart = (state: RootState) => state.cart.cart;
+
+export const getTotalCartPrice = (state: RootState) =>
+  state.cart.cart.reduce((sum, item) => sum + item.totalPrice, 0);
+
+export const getTotalCartQuantity = (state: RootState) =>
+  state.cart.cart.reduce((sum, item) => sum + item.quantity, 0);
 
 export const {
   addItem,
