@@ -19,7 +19,7 @@ function EmptyCart() {
           backgroundColor: "primary.main",
           color: "#ffd0df",
           borderRadius: 5,
-          width: { md: 210, sm: 200, xs: 1800 },
+          width: { md: 210, sm: 200, xs: 180 },
           fontSize: { xs: "0.8rem", sm: "1rem", md: "1.2rem" },
           fontWeight: "bold",
           "&:hover": {

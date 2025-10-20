@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { formatPrice } from "../../utils/helper";
-import UpdataQuantity from "../cart/UpdataQuantity";
+import UpdataQuantity from "../cart/UpdateQuantity";
 import type { ProductItemProps } from "../../interfaces/product";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, getCurrentQuantityById } from "../cart/cartSlice";
@@ -24,8 +24,8 @@ function ProducItem({ productItem }: ProductItemProps) {
       img: productItem.img,
       title: productItem.title,
       price: productItem.price,
-      quantity: 1,
-      totalPrice: productItem.price * 1,
+      quantity: productItem.quantity,
+      totalPrice: productItem.price * productItem.quantity,
     };
     dispatch(addItem(newItem));
   }

@@ -13,6 +13,7 @@ export interface ProductProps {
   description: string;
   img: string;
   price: number;
+  quantity: number;
 }
 
 export interface ProductItemProps {
@@ -23,6 +24,16 @@ export interface UpdateQuantityProps {
   productId: number;
 }
 
-export interface deleteItemProps {
+export interface DeleteItemProps {
   productId: number;
+}
+
+export interface CartItemProps {
+  cartItem: {
+    id: number;
+    title: string;
+    img: string;
+    totalPrice: number;
+    quantity: number;
+  };
 }
