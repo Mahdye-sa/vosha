@@ -38,10 +38,10 @@ const router = createBrowserRouter([
         errorElement: <NotFound />,
         element: <OccasionsBlog />,
       },
+      { path: "/order", element: <Order />, errorElement: <NotFound /> },
     ],
   },
   { path: "/login", element: <Login />, errorElement: <NotFound /> },
-  { path: "/order", element: <Order />, errorElement: <NotFound /> },
 ]);
 
 function App() {

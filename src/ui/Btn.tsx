@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 interface BtnProps {
   to: string;
   children?: string;
+  onclick?: FunctionConstructor;
 }
 
 function Btn({ to, children }: BtnProps) {

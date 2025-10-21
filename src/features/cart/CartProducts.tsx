@@ -31,7 +31,7 @@ function CartProducts() {
         </Box>
         <Button
           component={Link}
-          to="/products"
+          to="/order"
           sx={{
             mt: 2.5,
             backgroundColor: "primary.main",

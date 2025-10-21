@@ -1,7 +1,7 @@
-import OrderForm from "../features/order/OrderForm";
+import CreateOrderForm from "../features/order/CreateOrderForm";
 
 function Order() {
-  return <OrderForm />;
+  return <CreateOrderForm />;
 }
 
 export default Order;
