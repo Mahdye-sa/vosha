@@ -11,7 +11,10 @@ import OccasionsBlog from "./ui/OccasionsBlog";
 
 import AppLayout from "./ui/AppLayout";
 import getProducts from "./features/product/apiProduct";
-import Order from "./pages/Order";
+import CreateOrder, {
+  action as createOrderAction,
+} from "./features/order/CreateOrder";
+import SuccessOrder from "./ui/SuccessOrder";
 
 const router = createBrowserRouter([
   {
@@ -38,10 +41,16 @@ const router = createBrowserRouter([
         errorElement: <NotFound />,
         element: <OccasionsBlog />,
       },
-      { path: "/order", element: <Order />, errorElement: <NotFound /> },
+      {
+        path: "/order/new",
+        element: <CreateOrder />,
+        action: createOrderAction,
+        errorElement: <NotFound />,
+      },
     ],
   },
   { path: "/login", element: <Login />, errorElement: <NotFound /> },
+  { path: "/success", element: <SuccessOrder />, errorElement: <NotFound /> },
 ]);
 
 function App() {

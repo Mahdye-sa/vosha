@@ -1,5 +1,5 @@
 import { Box, Divider, Typography, Paper } from "@mui/material";
-import type { CartItemProps } from "../../interfaces/product";
+import type { CartItemProps } from "../../interfaces/cart";
 import DeleteItem from "./DeleteItem";
 import UpdateQuantity from "./UpdateQuantity";
 

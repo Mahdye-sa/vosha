@@ -7,7 +7,7 @@ import {
   getCurrentQuantityById,
   increaseItemQuantity,
 } from "./cartSlice";
-import type { UpdateQuantityProps } from "../../interfaces/product";
+import type { UpdateQuantityProps } from "../../interfaces/cart";
 
 function UpdataQuantity({ productId }: UpdateQuantityProps) {
   const dispatch = useDispatch();

@@ -37,7 +37,7 @@ function ProducItem({ productItem }: ProductItemProps) {
         flexShrink: 0,
         textAlign: "center",
         borderRadius: 4,
-        pb: "2rem",
+        pb: "1.5rem",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -46,16 +46,16 @@ function ProducItem({ productItem }: ProductItemProps) {
     >
       <CardMedia
         component="img"
-        height="320"
+        height="260"
         image={productItem.img}
         alt={productItem.title}
       />
       <CardContent>
-        <Typography variant="h5" mb={2} fontWeight="bold">
+        <Typography variant="h6" mb={2} fontWeight="bold">
           {productItem.title}
         </Typography>
 
-        <Typography variant="body1">{productItem.description}</Typography>
+        <Typography variant="body2">{productItem.description}</Typography>
 
         <Typography variant="h6" fontWeight="bold" mt={2}>
           {formatPrice(productItem.price)}

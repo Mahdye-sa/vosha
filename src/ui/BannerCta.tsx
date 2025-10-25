@@ -61,8 +61,12 @@ function BannerCta() {
             width: "100%",
           }}
         >
-          <Btn to="/products"> محصولات</Btn>
-          <Btn to="/login">ورود / ثبت‌نام</Btn>
+          <Btn to="/products" type="button">
+            محصولات
+          </Btn>
+          <Btn to="/login" type="button">
+            ورود / ثبت‌نام
+          </Btn>
         </Box>
       </Box>
     </Box>
