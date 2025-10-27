@@ -14,4 +14,9 @@ export interface CartItemProps {
     totalPrice: number;
     quantity: number;
   };
+  id: number;
+  title: string;
+  img: string;
+  totalPrice: number;
+  quantity: number;
 }

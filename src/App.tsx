@@ -15,6 +15,9 @@ import CreateOrder, {
   action as createOrderAction,
 } from "./features/order/CreateOrder";
 import SuccessOrder from "./ui/SuccessOrder";
+import OrderDetails, {
+  loader as orderDetailsLoader,
+} from "./features/order/OrderDetails";
 
 const router = createBrowserRouter([
   {
@@ -42,15 +45,26 @@ const router = createBrowserRouter([
         element: <OccasionsBlog />,
       },
       {
-        path: "/order/new",
-        element: <CreateOrder />,
-        action: createOrderAction,
+        path: "/orders/:orderId",
+        element: <OrderDetails />,
+        errorElement: <NotFound />,
+        loader: orderDetailsLoader,
+      },
+      {
+        path: "/success/:orderId",
+        element: <SuccessOrder />,
         errorElement: <NotFound />,
       },
     ],
   },
   { path: "/login", element: <Login />, errorElement: <NotFound /> },
-  { path: "/success", element: <SuccessOrder />, errorElement: <NotFound /> },
+
+  {
+    path: "/order/new",
+    element: <CreateOrder />,
+    action: createOrderAction,
+    errorElement: <NotFound />,
+  },
 ]);
 
 function App() {

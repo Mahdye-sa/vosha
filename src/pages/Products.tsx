@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
 import { useLoaderData } from "react-router-dom";
 import ProducItem from "../features/product/ProductItem";
-import Cart from "./Cart";
 
 interface productProps {
   id: number;

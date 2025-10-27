@@ -11,10 +11,10 @@ import { useSelector } from "react-redux";
 import { clearCart, getCart, getTotalCartPrice } from "../cart/cartSlice";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { useState } from "react";
-import createOrder from "./apiCreateOrder";
+import { createOrder } from "./apiOrder";
 import store from "../../store";
 
-function CreateOrderForm() {
+function CreateOrder() {
   const [withPriority, setWithPriority] = useState(false);
 
   const cart = useSelector(getCart);
@@ -48,7 +48,7 @@ function CreateOrderForm() {
           flexDirection: "column",
           alignItems: "center",
           gap: 2.5,
-          width: { xs: "80%", sm: "60%", md: "50%" },
+          width: { xs: "81%", sm: "70%", md: "60%" },
           textAlign: "center",
           py: 3,
           borderRadius: 4,
@@ -162,11 +162,11 @@ export async function action({ request }: { request: Request }) {
     priority: data.priority === "true",
   };
 
-  await createOrder({ order });
+  const newOrder = await createOrder(order);
 
   store.dispatch(clearCart());
 
-  return redirect("/success");
+  return redirect(`/success/${newOrder.id}`);
 }
 
-export default CreateOrderForm;
+export default CreateOrder;

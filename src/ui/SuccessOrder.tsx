@@ -1,8 +1,10 @@
 import { Box, Button, Typography } from "@mui/material";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 function SuccessOrder() {
+  const navigate = useNavigate();
+  const { orderId } = useParams();
   return (
     <Box
       sx={{
@@ -51,21 +53,37 @@ function SuccessOrder() {
           >
             ( : سفارش شما ثبت شد و به زودی به دستتون میرسه
           </Typography>
-          <Button
-            component={Link}
-            to={"/"}
-            variant="outlined"
-            sx={{
-              fontSize: {
-                xs: "1rem",
-                sm: "1rem",
-                md: "1.2rem",
-              },
-              borderRadius: 5,
-            }}
-          >
-            پیگیری سفارش
-          </Button>
+          <Box sx={{ display: "flex", flexDirection: "row", gap: 5 }}>
+            <Button
+              onClick={() => navigate(`/orders/${orderId}`)}
+              variant="outlined"
+              sx={{
+                fontSize: {
+                  xs: "1rem",
+                  sm: "1rem",
+                  md: "1.2rem",
+                },
+                borderRadius: 5,
+              }}
+            >
+              پیگیری سفارش
+            </Button>
+            <Button
+              component={Link}
+              to={"/"}
+              variant="outlined"
+              sx={{
+                fontSize: {
+                  xs: "1rem",
+                  sm: "1rem",
+                  md: "1.2rem",
+                },
+                borderRadius: 5,
+              }}
+            >
+              بازگشت به خانه
+            </Button>
+          </Box>
         </Box>
       </Box>
     </Box>
