@@ -1,86 +1,288 @@
 import {
   AppBar,
   Toolbar,
-  Typography,
   Box,
   Button,
   IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Divider,
 } from "@mui/material";
-import { ShoppingCart } from "@mui/icons-material";
-import { Link, NavLink } from "react-router-dom";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useState } from "react";
+import HomeFilledIcon from "@mui/icons-material/HomeFilled";
+import FilterVintageIcon from "@mui/icons-material/FilterVintage";
+import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 
 function Header() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [openDrawer, setOpenDrawer] = useState(false);
+
+  const handleArticlesClick = () => {
+    if (location.pathname === "/") {
+      const el = document.getElementById("blog-section");
+      el?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/", { state: { scrollTo: "blog-section" } });
+    }
+  };
+
   const navLinks = [
-    { label: "خانه", path: "/" },
-    { label: "محصولات", path: "/products" },
+    { label: "خانه", path: "/", icon: <HomeFilledIcon fontSize="large" /> },
+    {
+      label: "محصولات",
+      path: "/products",
+      icon: <FilterVintageIcon fontSize="large" />,
+    },
+    {
+      label: "مقالات",
+      onClick: handleArticlesClick,
+      icon: <LibraryBooksIcon fontSize="large" />,
+    },
   ];
 
   return (
-    <AppBar
-      position="sticky"
-      sx={{
-        backgroundColor: "white",
-        color: "black",
-        boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
-        py: 0.5,
-      }}
-    >
-      <Toolbar sx={{ justifyContent: "space-between", flexWrap: "wrap" }}>
-        {/* لوگو */}
-        <Typography
-          variant="h6"
-          component={Link}
-          to="/"
+    <>
+      {/* دسکتاپ */}
+      <AppBar
+        position="sticky"
+        sx={{
+          display: { xs: "none", md: "block" },
+          backgroundColor: "primary.main",
+          boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+        }}
+      >
+        <Toolbar sx={{ justifyContent: "space-between", flexWrap: "wrap" }}>
+          <img src="/logo.png" width="10%" alt="vosha logo" />
+
+          <Box sx={{ display: "flex", gap: 2 }}>
+            {navLinks.map((link) =>
+              link.onClick ? (
+                <Button
+                  key={link.label}
+                  onClick={link.onClick}
+                  sx={{
+                    color: "white",
+                    fontSize: "1.5rem",
+                  }}
+                >
+                  {link.label}
+                </Button>
+              ) : (
+                <Button
+                  key={link.path}
+                  component={NavLink}
+                  to={link.path!}
+                  sx={{ color: "white", fontSize: "1.5rem" }}
+                >
+                  {link.label}
+                </Button>
+              )
+            )}
+          </Box>
+
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+            <IconButton component={Link} to="/cart" sx={{ color: "white" }}>
+              <ShoppingCartIcon fontSize="medium" />
+            </IconButton>
+
+            <IconButton component={Link} to="/login" sx={{ color: "white" }}>
+              <AccountCircleIcon fontSize="medium" />
+            </IconButton>
+          </Box>
+        </Toolbar>
+      </AppBar>
+
+      {/* موبایل */}
+      <AppBar
+        position="sticky"
+        sx={{
+          display: { md: "none", xs: "block" },
+          backgroundColor: "primary.main",
+          boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+        }}
+      >
+        <Toolbar sx={{ justifyContent: "space-between" }}>
+          <img src="/logo.png" width="30%" alt="vosha logo" />
+          <IconButton
+            onClick={() => setOpenDrawer(true)}
+            sx={{ color: "white" }}
+          >
+            <MenuIcon fontSize="large" />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+      <Drawer
+        anchor="right"
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+      >
+        <Box
           sx={{
-            textDecoration: "none",
-            color: "inherit",
-            fontWeight: "bold",
-            fontFamily: "Vazirmatn, sans-serif",
+            minHeight: "100vh",
+            width: "18rem",
+            p: 2,
+            backgroundColor: "primary.main",
+            direction: "rtl",
           }}
         >
-          🌸 Flower Shop
-        </Typography>
-
-        {/* لینک‌های ناوبری */}
-        <Box sx={{ display: "flex", gap: 2 }}>
-          {navLinks.map((link) => (
-            <Button
-              key={link.path}
-              component={NavLink}
-              to={link.path}
-              sx={{
-                color: "black",
-                textDecoration: "none",
-                "&.active": { color: "primary.main", fontWeight: "bold" },
-              }}
-            >
-              {link.label}
-            </Button>
-          ))}
-        </Box>
-
-        {/* دکمه‌های سمت راست */}
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-          <IconButton
-            component={Link}
-            to="/cart"
-            color="primary"
-            sx={{ borderRadius: 2 }}
+          <List
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              height: "100%",
+            }}
           >
-            <ShoppingCart />
-          </IconButton>
+            <ListItem disablePadding>
+              <ListItemButton
+                component={NavLink}
+                to="/login"
+                onClick={() => setOpenDrawer(false)}
+                sx={{
+                  justifyContent: "center",
+                  textAlign: "center",
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 1.2,
+                    flexDirection: "row-reverse",
+                    width: "100%",
+                  }}
+                >
+                  <ListItemText
+                    primary="ورود / ثبت‌نام"
+                    primaryTypographyProps={{
+                      fontSize: "1.5rem",
+                      color: "white",
+                      textAlign: "center",
+                    }}
+                  />
+                  <AccountCircleIcon fontSize="large" sx={{ color: "white" }} />
+                </Box>
+              </ListItemButton>
+            </ListItem>
 
-          <Button
-            variant="outlined"
-            component={Link}
-            to="/login"
-            sx={{ borderRadius: 2 }}
-          >
-            ورود
-          </Button>
+            <Divider sx={{ bgcolor: "white" }} />
+
+            {navLinks.map((link) => (
+              <Box key={link.label}>
+                <ListItem disablePadding>
+                  {link.onClick ? (
+                    <ListItemButton
+                      onClick={() => {
+                        link.onClick?.();
+                        setOpenDrawer(false);
+                      }}
+                      sx={{
+                        justifyContent: "center",
+                        textAlign: "center",
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: 1.2,
+                          flexDirection: "row-reverse",
+                          width: "100%",
+                        }}
+                      >
+                        <ListItemText
+                          primary={link.label}
+                          primaryTypographyProps={{
+                            fontSize: "1.5rem",
+                            color: "white",
+                            textAlign: "center",
+                          }}
+                        />
+                        <Box sx={{ color: "white" }}>{link.icon}</Box>
+                      </Box>
+                    </ListItemButton>
+                  ) : (
+                    <ListItemButton
+                      component={NavLink}
+                      to={link.path!}
+                      onClick={() => setOpenDrawer(false)}
+                      sx={{
+                        justifyContent: "center",
+                        textAlign: "center",
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: 1.2,
+                          flexDirection: "row-reverse",
+                          width: "100%",
+                        }}
+                      >
+                        <ListItemText
+                          primary={link.label}
+                          primaryTypographyProps={{
+                            fontSize: "1.5rem",
+                            color: "white",
+                            textAlign: "center",
+                          }}
+                        />
+                        <Box sx={{ color: "white" }}>{link.icon}</Box>
+                      </Box>
+                    </ListItemButton>
+                  )}
+                </ListItem>
+                <Divider sx={{ bgcolor: "white" }} />
+              </Box>
+            ))}
+
+            <ListItem disablePadding>
+              <ListItemButton
+                component={NavLink}
+                to="/cart"
+                onClick={() => setOpenDrawer(false)}
+                sx={{
+                  justifyContent: "center",
+                  textAlign: "center",
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 1.2,
+                    flexDirection: "row-reverse",
+                    width: "100%",
+                  }}
+                >
+                  <ListItemText
+                    primary="سبد خرید"
+                    primaryTypographyProps={{
+                      fontSize: "1.5rem",
+                      color: "white",
+                      textAlign: "center",
+                    }}
+                  />
+                  <ShoppingCartIcon fontSize="large" sx={{ color: "white" }} />
+                </Box>
+              </ListItemButton>
+            </ListItem>
+          </List>
         </Box>
-      </Toolbar>
-    </AppBar>
+      </Drawer>
+    </>
   );
 }
 

@@ -29,10 +29,11 @@ function CartProducts() {
 
           <Typography variant="h6">قیمت کل : {totalCartPrice} تومان</Typography>
         </Box>
-
-        <Btn type="button" to="/order/new" width="80%">
-          ثبت سفارش
-        </Btn>
+        <Box>
+          <Btn type="button" to="/order/new" width="100%">
+            ثبت سفارش
+          </Btn>
+        </Box>
       </Box>
     </Box>
   );
