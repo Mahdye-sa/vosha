@@ -14,18 +14,22 @@ function Footer() {
 
   const contactList = [
     {
+      id: 1,
       content: <Typography variant="h6">123456789</Typography>,
       icon: <WhatsAppIcon fontSize="medium" />,
     },
     {
+      id: 2,
       content: <Typography variant="h6">vosha shop</Typography>,
       icon: <YouTubeIcon fontSize="medium" />,
     },
     {
+      id: 3,
       content: <Typography variant="h6">vosha-ms</Typography>,
       icon: <InstagramIcon fontSize="medium" />,
     },
     {
+      id: 4,
       content: <Typography variant="h6">vosha-gol</Typography>,
       icon: <TelegramIcon fontSize="medium" />,
     },
@@ -82,6 +86,7 @@ function Footer() {
           >
             {contactList.map((contact) => (
               <Box
+                key={contact.id}
                 sx={{
                   display: "flex",
                   flexDirection: "row",
@@ -100,8 +105,22 @@ function Footer() {
 
         <Divider />
 
-        <Box sx={{ color: "white", textAlign: "center" }}>
-          <Typography variant="h5">وشا</Typography>
+        <Box
+          sx={{
+            color: "white",
+            textAlign: "center",
+            width: { xs: "100%", md: "30%" },
+          }}
+        >
+          <Typography variant="h5" pb={1}>
+            وشا
+          </Typography>
+          <Typography variant="subtitle1">
+            اینجا جایی است که گل ها با عشق پرورش می یابند و هر گلبرگ قصه ای از
+            مهربانی در دل دارد . ما باور داریم زیبایی در سادگی نهفته است . همان
+            لحظه ای که عطر یک گل جهان را ارام می کند . بگذار عطر عشق را از دل
+            طبیعت به خانه ی تو بیاوریم
+          </Typography>
         </Box>
       </Box>
 
