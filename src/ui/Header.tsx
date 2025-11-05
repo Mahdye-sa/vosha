@@ -50,7 +50,6 @@ function Header() {
 
   return (
     <>
-      {/* دسکتاپ */}
       <AppBar
         position="sticky"
         sx={{
@@ -70,7 +69,7 @@ function Header() {
                   onClick={link.onClick}
                   sx={{
                     color: "white",
-                    fontSize: "1.5rem",
+                    fontSize: "1.2rem",
                   }}
                 >
                   {link.label}
@@ -80,7 +79,7 @@ function Header() {
                   key={link.path}
                   component={NavLink}
                   to={link.path!}
-                  sx={{ color: "white", fontSize: "1.5rem" }}
+                  sx={{ color: "white", fontSize: "1.2rem" }}
                 >
                   {link.label}
                 </Button>
@@ -100,7 +99,6 @@ function Header() {
         </Toolbar>
       </AppBar>
 
-      {/* موبایل */}
       <AppBar
         position="sticky"
         sx={{
@@ -115,7 +113,7 @@ function Header() {
             onClick={() => setOpenDrawer(true)}
             sx={{ color: "white" }}
           >
-            <MenuIcon fontSize="large" />
+            <MenuIcon fontSize="medium" />
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -127,7 +125,7 @@ function Header() {
         <Box
           sx={{
             minHeight: "100vh",
-            width: "18rem",
+            width: "15rem",
             p: 2,
             backgroundColor: "primary.main",
             direction: "rtl",
@@ -155,7 +153,7 @@ function Header() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    gap: 1.2,
+                    gap: 0,
                     flexDirection: "row-reverse",
                     width: "100%",
                   }}
@@ -163,7 +161,7 @@ function Header() {
                   <ListItemText
                     primary="ورود / ثبت‌نام"
                     primaryTypographyProps={{
-                      fontSize: "1.5rem",
+                      fontSize: "1rem",
                       color: "white",
                       textAlign: "center",
                     }}
@@ -194,7 +192,7 @@ function Header() {
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          gap: 1.2,
+                          gap: 0,
                           flexDirection: "row-reverse",
                           width: "100%",
                         }}
@@ -202,7 +200,7 @@ function Header() {
                         <ListItemText
                           primary={link.label}
                           primaryTypographyProps={{
-                            fontSize: "1.5rem",
+                            fontSize: "1rem",
                             color: "white",
                             textAlign: "center",
                           }}
@@ -225,7 +223,7 @@ function Header() {
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          gap: 1.2,
+                          gap: 0,
                           flexDirection: "row-reverse",
                           width: "100%",
                         }}
@@ -233,7 +231,7 @@ function Header() {
                         <ListItemText
                           primary={link.label}
                           primaryTypographyProps={{
-                            fontSize: "1.5rem",
+                            fontSize: "1rem",
                             color: "white",
                             textAlign: "center",
                           }}
@@ -262,7 +260,7 @@ function Header() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    gap: 1.2,
+                    gap: 0,
                     flexDirection: "row-reverse",
                     width: "100%",
                   }}
@@ -270,7 +268,7 @@ function Header() {
                   <ListItemText
                     primary="سبد خرید"
                     primaryTypographyProps={{
-                      fontSize: "1.5rem",
+                      fontSize: "1rem",
                       color: "white",
                       textAlign: "center",
                     }}

@@ -38,6 +38,7 @@ function WhyUs() {
             fontWeight: "bold",
             mb: 2,
             fontSize: { xs: "1.1rem", sm: "1.4rem", md: "1.6rem" },
+            px: 1,
           }}
         >
           ما در وشا باور داریم هر گل یک داستان دارد؛ داستانی از عشق، قدردانی،
@@ -60,6 +61,7 @@ function WhyUs() {
             fontWeight: "bold",
             mb: 2,
             fontSize: { xs: "1.1rem", sm: "1.4rem", md: "1.6rem" },
+            px: 1,
           }}
         >
           ما در تهران فعالیت می‌کنیم و سفارش‌ها را به‌صورت آنلاین و حضوری

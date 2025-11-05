@@ -2,7 +2,6 @@ import { Box, Typography } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EmailIcon from "@mui/icons-material/Email";
-import InstagramIcon from "@mui/icons-material/Instagram";
 
 function ContactUs() {
   return (
@@ -55,15 +54,15 @@ function ContactUs() {
           backgroundSize: "100%",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          width: { xs: "90%", sm: "50%", md: "70%" },
+          width: { xs: "80%", sm: "50%", md: "70%" },
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "space-between",
+          justifyContent: "space-around",
           py: 10,
         }}
       >
-        <Box sx={{}}>
+        <Box>
           <Typography
             variant="h6"
             sx={{
@@ -72,6 +71,7 @@ function ContactUs() {
               fontSize: { xs: "1.1rem", sm: "1.4rem", md: "1.6rem" },
               display: "flex",
               alignItems: "center",
+              justifyContent: "right",
               gap: 1,
             }}
           >
@@ -86,6 +86,7 @@ function ContactUs() {
               fontSize: { xs: "1.1rem", sm: "1.4rem", md: "1.6rem" },
               display: "flex",
               alignItems: "center",
+              justifyContent: "right",
               gap: 1,
             }}
           >
@@ -100,24 +101,11 @@ function ContactUs() {
               fontSize: { xs: "1.1rem", sm: "1.4rem", md: "1.6rem" },
               display: "flex",
               alignItems: "center",
+              justifyContent: "right",
               gap: 1,
             }}
           >
             ایمیل <EmailIcon sx={{ fontSize: "1.4rem" }} />
-          </Typography>
-
-          <Typography
-            variant="h6"
-            sx={{
-              fontWeight: "bold",
-              mb: 2,
-              fontSize: { xs: "1.1rem", sm: "1.4rem", md: "1.6rem" },
-              display: "flex",
-              alignItems: "center",
-              gap: 1,
-            }}
-          >
-            اینستاگرام <InstagramIcon sx={{ fontSize: "1.4rem" }} />
           </Typography>
         </Box>
       </Box>

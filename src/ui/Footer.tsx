@@ -14,22 +14,14 @@ function Footer() {
 
   const contactList = [
     {
-      id: 1,
-      content: <Typography variant="h6">123456789</Typography>,
-      icon: <WhatsAppIcon fontSize="medium" />,
-    },
-    {
-      id: 2,
       content: <Typography variant="h6">vosha shop</Typography>,
       icon: <YouTubeIcon fontSize="medium" />,
     },
     {
-      id: 3,
       content: <Typography variant="h6">vosha-ms</Typography>,
       icon: <InstagramIcon fontSize="medium" />,
     },
     {
-      id: 4,
       content: <Typography variant="h6">vosha-gol</Typography>,
       icon: <TelegramIcon fontSize="medium" />,
     },
@@ -47,7 +39,7 @@ function Footer() {
           px: 6,
           py: 3,
           textAlign: "center",
-          mt: 20,
+          mt: 10,
         }}
       >
         <Box>
@@ -84,9 +76,9 @@ function Footer() {
               justifyContent: "center",
             }}
           >
-            {contactList.map((contact) => (
+            {contactList.map((contact, i) => (
               <Box
-                key={contact.id}
+                key={i}
                 sx={{
                   display: "flex",
                   flexDirection: "row",

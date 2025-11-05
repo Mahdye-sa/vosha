@@ -5,6 +5,7 @@ import AboutUs from "../ui/AboutUs";
 import ContactUs from "../ui/ContactUs";
 import FAQAccordion from "../ui/FAQAccordion";
 import BlogPreview from "../ui/BlogCards";
+import ChatBot from "../features/Chat/ChatBot";
 
 function Home() {
   return (
@@ -16,6 +17,7 @@ function Home() {
       <BlogPreview />
       <ContactUs />
       <FAQAccordion />
+      <ChatBot />
     </>
   );
 }
