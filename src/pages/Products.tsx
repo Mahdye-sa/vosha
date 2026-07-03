@@ -13,6 +13,7 @@ interface productProps {
 
 function Products() {
   const products = useLoaderData<productProps[]>();
+ 
 
   return (
     <Box

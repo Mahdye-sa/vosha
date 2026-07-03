@@ -5,6 +5,8 @@ async function getProducts() {
 
   if (error) console.log(error.message);
 
+
+
   return products;
 }
 
